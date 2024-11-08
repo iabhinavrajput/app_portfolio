@@ -159,8 +159,8 @@ alt = fundo
 Fundo
 Web design
 
-alt = brawlhalla
-Brawlhalla
+alt = FXCareers
+FXCareers
 Applications
 
 alt = dsm.
@@ -175,8 +175,8 @@ alt = summary
 Summary
 Web development
 
-alt = task manager
-Task Manager
+alt = YaMarkets Academy
+YaMarkets Academy
 Applications
 
 alt = arrival
