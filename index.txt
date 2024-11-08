@@ -9,16 +9,16 @@ App developer
 Show Contacts
 
 Email
-richard@example.com
+abhinavtechee@gmail.com
 
 Phone
-+1 (213) 352-2795
++91 9760421481
 
 Birthday
-June 23, 1982
+July 15, 2003
 
 Location
-Sacramento, California, USA
+New Delhi
 
 # navbar
 
