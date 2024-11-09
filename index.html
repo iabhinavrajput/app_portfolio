@@ -27,7 +27,40 @@
 
 
 
+
+  <!-- netlify js -->
   <script>
+    async function sendEmail(event) {
+      event.preventDefault();
+      var form = document.getElementById('contactForm');
+      var submitButton = document.getElementById('submitButton');
+      var originalButtonText = submitButton.innerHTML;
+      submitButton.innerHTML = 'Loading...';
+
+      var formData = new FormData(form);
+      var data = {};
+      formData.forEach((value, key) => data[key] = value);
+
+      try {
+        let response = await fetch('/.netlify/functions/send_mail', {
+          method: 'POST',
+          body: JSON.stringify(data),
+        });
+        let result = await response.text();
+        alert(result);
+        submitButton.innerHTML = originalButtonText;
+        if (result.includes("Message sent successfully!")) {
+          form.reset();
+        }
+      } catch (error) {
+        console.error('Error:', error);
+        submitButton.innerHTML = originalButtonText;
+      }
+    }
+  </script>
+
+<!-- php -->
+  <!-- <script>
     function sendEmail(event) {
       event.preventDefault();
       var form = document.getElementById('contactForm');
@@ -54,7 +87,7 @@
         submitButton.innerHTML = originalButtonText;
       });
     }
-  </script>
+  </script> -->
 
 </head>
 
@@ -1224,8 +1257,6 @@
 
           <h3 class="h3 form-title">Contact Form</h3>
 
-
-
           <form id="contactForm" class="form" onsubmit="sendEmail(event)">
             <div class="input-wrapper">
               <input type="text" name="fullname" class="form-input" placeholder="Full name" required data-form-input>
@@ -1237,6 +1268,20 @@
               <span>Send Message</span>
             </button>
           </form>
+
+<!-- php -->
+
+          <!-- <form id="contactForm" class="form" onsubmit="sendEmail(event)">
+            <div class="input-wrapper">
+              <input type="text" name="fullname" class="form-input" placeholder="Full name" required data-form-input>
+              <input type="email" name="email" class="form-input" placeholder="Email address" required data-form-input>
+            </div>
+            <textarea name="message" class="form-input" placeholder="Your Message" required data-form-input></textarea>
+            <button id="submitButton" class="form-btn" type="submit" data-form-btn>
+              <ion-icon name="paper-plane"></ion-icon>
+              <span>Send Message</span>
+            </button>
+          </form> -->
        
 
           <!-- <form action="send_mail.php" method="post" class="form" data-form>
